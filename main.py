@@ -3,9 +3,9 @@ def main():
     text = get_book_text(book_path) 
     words_count = get_book_word_counts(text) 
     print("--- Begin report of books/frankenstein.txt ---")
-
     letters_count = get_letters_count(text)
     print(f"{words_count} words found in the document")
+    print("")
 
     letters = make_list_of_dictionaries(letters_count)
     letters.sort(reverse = True, key = sort_on)
@@ -43,6 +43,7 @@ def sort_on(dict):
 
 def print_letters_nicely(list):
     for item in list:
-        print(f"The '{item["name"]}' character was found '{item["num"]}' times")
+        if item["name"].isalpha():
+            print(f"The '{item["name"]}' character was found '{item["num"]}' times")
 
 main()
